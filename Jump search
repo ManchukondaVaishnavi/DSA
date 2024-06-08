@@ -3,7 +3,7 @@ public class Main{
     public static int Jump(int a[],int x){
         int ju=(int)Math.sqrt(a.length);
         int i=0;
-        for(i=0;i<a.length;i++){
+        for(i=0;ju*i<a.length;i++){
             if(a[ju*i]>x){
                break; 
             }
