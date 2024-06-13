@@ -1,0 +1,65 @@
+import java.util.*;
+public class LinkedList{
+    static Node head;
+    public static class Node{
+        int d;
+        Node next;
+        public Node(int d){
+            this.d=d;
+            
+        }
+    }
+        public static void InsertBeg(int val){
+            Node n=new Node(val);
+            n.next=head;
+            head=n;
+        }
+        public static void Display(){
+            Node h=head;
+            while(h!=null){
+                System.out.print(h.d+" ");
+                h=h.next;
+            }
+            System.out.println();
+        }
+    public static void InsertLast(int val){
+        Node n=new Node(val);
+        Node t=head;
+        while(t.next!=null){
+            t=t.next;
+        }
+        t.next=n;
+        n.next=null;
+    }
+    public static void Insertpos(int val,int pos){
+        Node n=new Node(val);
+        Node c=head;
+        Node pre=null;
+        int i=1;
+        while(i<pos&&c.next!=null){
+            pre=c;
+           c=c.next; 
+           i++;
+        }
+        pre.next=n;
+        n.next=c;
+    }
+    public static void main(String args[]){
+        LinkedList l=new LinkedList();
+        head =new Node(10);
+        Node sec=new Node(11);
+        Node thi=new Node(13);
+        Node fo=new Node(14);
+        head.next=sec;
+        sec.next=thi;
+        thi.next=fo;
+        fo.next=null;
+        Display();
+        InsertBeg(12);
+        Display();
+        InsertLast(15);
+        Display();
+        Insertpos(17,3);
+        Display();
+    }
+}
