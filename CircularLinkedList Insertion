@@ -1,0 +1,73 @@
+import java.util.*;
+public class CircularLinkedList{
+  static Node head;
+    public static class Node{
+        int d;
+        Node next;
+    
+    public Node(int d){
+        this.d=d;
+    }
+}
+public static void Display(){
+    Node c=head;
+    while(c.next!=head){
+        System.out.print(c.d+" ");
+        c=c.next;
+    }
+    System.out.println(c.d);
+}
+public void InsertBeg(int v){
+    Node n=new Node(v);
+    Node c=head;
+    while(c.next!=head){
+        c=c.next;
+    }
+    n.next=head;
+    c.next=n;
+    head=n;
+    
+}
+public void InsertLast(int v){
+    Node n=new Node(v);
+    Node c=head;
+    while(c.next!=head){
+        c=c.next;
+    }
+    c.next=n;
+    n.next=head;
+}
+public void Insertpos(int pos,int v){
+    Node n=new Node(v);
+    Node c=head;
+    Node pre=null;
+    int i=1;
+    while(i<pos){
+        pre=c;
+        c=c.next;
+        i++;
+    }
+   pre.next=n;
+   n.next=c;
+}
+ public static void main(String args[]){
+        CircularLinkedList cl=new CircularLinkedList();
+        head=new Node(11);
+     Node sec=new Node(12);
+     Node thi=new Node(13);
+     Node f=new Node(14);
+     Node n5=new Node(15);
+     head.next=sec;
+     sec.next=thi;
+     thi.next=f;
+     f.next=n5;
+     n5.next=head;
+     cl.Display();
+     cl.InsertBeg(10);
+     cl.Display();
+     cl.InsertLast(16);
+     cl.Display();
+     cl.Insertpos(4,17);
+     cl.Display();
+    }
+}
