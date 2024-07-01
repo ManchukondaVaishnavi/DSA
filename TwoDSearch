@@ -1,0 +1,39 @@
+import java.util.*;
+public class TwoDSearch{
+    public static class Pair{
+        int f,s;
+        public Pair(int f,int s){
+            this.f=f;
+            this.s=s;
+        }
+    }
+public static Pair Search(int a[][],int row,int col,int x){
+    int r=0,c=col-1;
+    while(c>=0&&r<row){
+        if(a[r][c]==x){
+            return new Pair(r,c);
+        }
+        else if(a[r][c]>x){
+            c--;
+        }
+        else{
+            r++;
+        }
+    }
+    return new Pair(-1,-1);
+    
+}
+public static void main(String[] args){
+    Scanner s=new Scanner(System.in);
+    int n=s.nextInt();
+    int a[][]=new int[n][n];
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            a[i][j]=s.nextInt();
+        }
+    }
+    int x=s.nextInt();
+    Pair res=Search(a,n,n,x);
+    System.out.print(res.f+" "+res.s);
+}
+}
