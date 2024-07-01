@@ -1,0 +1,60 @@
+import java.util.*;
+public class LinkedList{
+    static Node head1;
+    static Node head2;
+    public static class Node{
+        int d;
+        Node next;
+        public Node(int d){
+            this.d=d;
+        }
+    }
+   
+    public static int Intersect(){
+        Node n=head1;
+       
+        while(n!=null){
+            Node c=head2;
+            while(c!=null){
+                if(n.d==c.d){
+                    return n.d;
+                }
+                c=c.next;
+            }
+            n=n.next;
+        }
+     
+    
+        return -1;
+    }
+    public static void main(String[] args){
+        Scanner s=new Scanner(System.in);
+        int f=s.nextInt();
+        int se=s.nextInt();
+        int t=s.nextInt();
+        int fo=s.nextInt();
+head1=new Node(f);
+Node n2=new Node(se);
+Node n3=new Node(t);
+Node n4=new Node(fo);
+head1.next=n2;
+n2.next=n3;
+n3.next=n4;
+n4.next=null;
+int f1=s.nextInt();
+int s2=s.nextInt();
+int t2=s.nextInt();
+int fo2=s.nextInt();
+head2=new Node(f1);
+Node n22=new Node(s2);
+Node n32=new Node(t2);
+Node n42=new Node(fo2);
+head2.next=n22;
+n22.next=n32;
+n32.next=n42;
+n42.next=null;
+
+
+System.out.print(Intersect());
+    }
+}
