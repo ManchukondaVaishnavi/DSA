@@ -1,0 +1,42 @@
+import java.util.*;
+public class LinkedList{
+    static Node head;
+    public static class Node{
+        int d;
+        Node next;
+        public Node(int d){
+            this.d=d;
+        }
+    }
+   
+    public static int Search(int x){
+        int i=1;
+        Node n=head;
+        while(n!=null){
+            if(n.d==x){
+                return i;
+            }
+            i++;
+            n=n.next;
+        }
+        return -1;
+    }
+    public static void main(String[] args){
+        Scanner s=new Scanner(System.in);
+        int f=s.nextInt();
+        int se=s.nextInt();
+        int t=s.nextInt();
+        int fo=s.nextInt();
+head=new Node(f);
+Node n2=new Node(se);
+Node n3=new Node(t);
+Node n4=new Node(fo);
+head.next=n2;
+n2.next=n3;
+n3.next=n4;
+n4.next=null;
+int x=s.nextInt();
+int r=Search(x);
+System.out.print(r);
+    }
+}
