@@ -1,0 +1,34 @@
+import java.util.*;
+public class RationalSearch{
+   
+    public static void main(String[] args){
+        Scanner s=new Scanner(System.in);
+        int n=s.nextInt();
+        String a[]=new String[n];
+        for(int i=0;i<n;i++){
+           a[i]=s.next();
+           }
+           String t=s.next();
+           int x=0,y=0;
+          
+          String tar[]=t.split("/");
+          x=Integer.parseInt(tar[0]);
+         y=Integer.parseInt(tar[1]);
+          
+           for(int i=0;i<n;i++){
+               int deno=0,num=0;
+              
+               String[] temp=a[i].split("/");
+              num=Integer.parseInt(temp[0]);
+              deno=Integer.parseInt(temp[1]);
+              
+               if(x*deno==y*num){
+                   System.out.print(i);
+                   return;
+               }
+               
+           }
+           System.out.print("Not found");
+    }
+}
+        
