@@ -1,0 +1,38 @@
+import java.util.*;
+public class nBykTimes{
+    public static void main(String[] args){
+        Scanner s=new Scanner(System.in);
+        int n=s.nextInt();
+        int a[]=new int[n];
+        for(int i=0;i<n;i++){
+            a[i]=s.nextInt();
+        }
+        int b[]=new int[n];
+        int o=0;
+        int k=s.nextInt();
+        for(int i=0;i<n-1;i++){
+            int c=0;
+            for(int j=0;j<n;j++){
+            if(a[i]==a[j]&&i!=j){
+                c++;
+        }
+        }
+        
+        if(c==n/k){
+            b[o++]=a[i];
+            //System.out.print(a[i]+" ");
+        }
+        }
+        for(int i=0;i<o;i++){
+            int h=0;
+            for(int j=i+1;j<o;j++){
+                if(b[i]==b[j]){
+                    h++;
+                }
+            }
+            if(h==0){
+                System.out.print(b[i]+" ");
+            }
+        }
+    }
+}
