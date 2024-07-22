@@ -1,0 +1,44 @@
+import java.util.*;
+public class TreeLevelByOrder{
+    public static Node root;
+    public static class Node {
+        int d;
+        Node left;
+        Node right;
+        Node(int d){
+            this.d=d;
+        }
+    }
+   
+    public static void LevelByTraversal(Node n){
+        Queue<Node> q=new LinkedList<>();
+        q.offer(n);
+        while(!q.isEmpty()){
+           Node temp=q.poll();
+            System.out.print(temp.d+" ");
+            if(temp.left!=null){
+                q.offer(temp.left);
+            }
+            if(temp.right!=null){
+                q.offer(temp.right);
+            }
+            }
+    }
+    public static void main(String[] args){
+        Scanner s=new Scanner(System.in);
+        root =new Node(10);
+        Node l=new Node(12);
+        Node r=new Node(13);
+        Node ll=new Node(14);
+        Node lr=new Node(15);
+        Node rl=new Node(16);
+        Node rr=new Node(17);
+        root.left=l;
+        root.right=r;
+       l.left=ll;
+       l.right=lr;
+       r.left=rl;
+       r.right=rr;
+       LevelByTraversal(root);
+    }
+}
