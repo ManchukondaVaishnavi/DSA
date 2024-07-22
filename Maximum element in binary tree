@@ -1,0 +1,46 @@
+import java.util.*;
+public class Tree{
+    public static Node root;
+    public static class Node{
+        int d;
+        Node left;
+        Node right;
+        Node(int d){
+            this.d=d;
+        }
+    }
+    public static int FindMax(Node n){
+       int result=0;
+       if(n!=null){
+           result=n.d;
+           int l=FindMax(n.left);
+           int r=FindMax(n.right);
+           if(l>result){
+               result=l;
+               
+           }
+           if(r>result){
+               result=r;
+           }
+    
+       }
+       return result;
+    }
+    public static void main(String[] args){
+         Scanner s=new Scanner(System.in);
+        root =new Node(10);
+        Node l=new Node(12);
+        Node r=new Node(13);
+        Node ll=new Node(14);
+        Node lr=new Node(15);
+        Node rl=new Node(16);
+        Node rr=new Node(17);
+        root.left=l;
+        root.right=r;
+       l.left=ll;
+       l.right=lr;
+       r.left=rl;
+       r.right=rr;
+       System.out.print(FindMax(root));
+    }
+}
