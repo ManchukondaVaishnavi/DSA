@@ -1,0 +1,57 @@
+import java.util.*;
+public class BinaryTree{
+    public static Node root;
+    public static class Node {
+        int d;
+        Node left;
+        Node right;
+        Node(int d){
+            this.d=d;
+        }
+    }
+    public static void preOrderTraversal(Node n){
+
+if(n!=null){
+      System.out.print(n.d+" ");
+      preOrderTraversal(n.left);
+      preOrderTraversal(n.right);
+    }
+    
+    }
+    public static void inOrderTraversal(Node n){
+        if(n!=null){
+    inOrderTraversal(n.left);
+    System.out.print(n.d+" ");
+    inOrderTraversal(n.right);
+    }
+    }
+    public static void postOrderTraversal(Node n){
+        if(n!=null){
+        postOrderTraversal(n.left);
+        postOrderTraversal(n.right);
+        System.out.print(n.d+" ");
+        }
+    }
+    public static void main(String[] args){
+        Scanner s=new Scanner(System.in);
+        root =new Node(10);
+        Node l=new Node(12);
+        Node r=new Node(13);
+        Node ll=new Node(14);
+        Node lr=new Node(15);
+        Node rl=new Node(16);
+        Node rr=new Node(17);
+        root.left=l;
+        root.right=r;
+       l.left=ll;
+       l.right=lr;
+       r.left=rl;
+       r.right=rr;
+       preOrderTraversal(root);
+       System.out.println();
+       inOrderTraversal(root);
+       System.out.println();
+       postOrderTraversal(root);
+       System.out.println();
+    }
+}
