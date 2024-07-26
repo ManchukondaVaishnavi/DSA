@@ -1,0 +1,41 @@
+import java.util.*;
+public class StackLink{
+    static Node top;
+    static int length;
+    public static class Node{
+        int d;
+        Node next;
+        public Node(int d){
+            this.d=d;
+        }
+    }
+    public static void push(int v){
+        Node n=new Node(v);
+        n.next=top;
+        top=n;
+        length++;
+    }
+    public static void pop(){
+        top=top.next;
+        length--;
+    }
+    public static void display(){
+        Node n=top;
+        while(n!=null){
+            System.out.print(n.d+" ");
+            n=n.next;
+        }
+        System.out.println();
+    }
+    public static void main(String[] args){
+       push(10);
+       push(20);
+       push(30);
+       push(40);
+       push(50);
+       display();
+       pop();
+       pop();
+       display();
+    }
+}
