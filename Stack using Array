@@ -1,0 +1,41 @@
+import java.util.*;
+public class StackArray{
+    static int arr[];
+    static int top=-1;
+    public static void push(int v){
+        if(top<arr.length){
+            top++;
+            arr[top]=v;
+           
+        }
+    }
+    public static void pop(){
+        if(top>=0){
+            
+         top--;
+        }
+    }
+    public static void display(){
+        int t=top;
+        for(int i=top;i>=0;i--){
+            System.out.print(arr[i]+" ");
+        }
+        System.out.println();
+    }
+    public static void peek(){
+        System.out.println(arr[top]);
+    }
+    public static void main(String args[]){
+        arr=new int[10];
+        push(12);
+        push(11);
+        push(10);
+        push(9);
+        push(8);
+        display();
+        pop();
+        pop();
+        pop();
+        display();
+    }
+}
