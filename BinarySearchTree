@@ -1,0 +1,47 @@
+import java.util.*;
+public class BinarySearchTree{
+    static Node root;
+    public static class Node{
+        int d;
+        Node left;
+        Node right;
+        public Node(int d){
+            this.d=d;
+        }
+    }
+public static Node insert(int v){
+        root=insert(root,v);
+        return root;
+    } 
+    public static Node insert(Node n,int v){
+        
+        Node temp=n;
+        if(n==null){
+            n=new Node(v);
+           return n;
+        }
+        else{
+        
+                if(n.d>v){
+                    n.left=insert(n.left,v);
+                }
+                else{
+                    n.right=insert(n.right,v);
+                }
+            }
+           return n;
+        
+    }
+public static void main(String args[]){
+      int min=Integer.MIN_VALUE;
+      int max=Integer.MAX_VALUE;
+      insert(10);
+      insert(8);
+      insert(45);
+      insert(56);
+      insert(23);
+      insert(2);
+      insert(9);
+      preorder(root);
+}
+}
