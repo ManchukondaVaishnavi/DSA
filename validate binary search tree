@@ -1,0 +1,56 @@
+import java.util.*;
+public class BinarySearchTree{
+    static Node root;
+    public static class Node{
+        int d;
+        Node left;
+        Node right;
+        public Node(int d){
+            this.d=d;
+        }
+    }
+    public static void inorder(Node n){
+       if(n!=null){
+           inorder(n.left);
+           System.out.print(n.d+" ");
+           inorder(n.right);
+       }
+        
+    }
+   
+    public static boolean Validate(Node root,int min,int max){
+       if(root==null) {
+           return true;
+       }
+       if(root.d<=min||root.d>=max){
+           return false;
+       }
+       boolean left=Validate(root.left,min,root.d);
+       boolean right;
+       if(left){
+          right=Validate(root.right,root.d,max);
+          return right;
+       }
+        return false;
+    }
+    public static void main(String args[]){
+      int min=Integer.MIN_VALUE;
+      int max=Integer.MAX_VALUE;
+      root=new Node(10);
+      Node l=new Node(45);
+      Node r=new Node(11);
+      Node ll=new Node(6);
+      Node lr=new Node(56);
+      Node rl=new Node(200);
+      Node rr=new Node(42);
+      root.left=l;
+      root.right=r;
+      l.left=ll;
+      l.right=lr;
+      r.left=rl;
+      r.right=rr;
+      inorder(root);
+      System.out.print(Validate(root,min,max));
+       
+    }
+}
