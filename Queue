@@ -1,0 +1,47 @@
+import java.util.*;
+public class Queue{
+    static Node front;
+    static Node rear;
+    static int length=0;
+    public static class Node{
+        int d;
+        Node next;
+        public Node(int d){
+           this.d=d; 
+        }
+    }
+    public static void Enqueue(int d){
+        Node n=new Node(d);
+        if(length==0){
+            front=n;
+        }else{
+           rear.next=n;
+        }
+           rear=n;
+           length++;
+    }
+    public static void display(){
+        Node n=front;
+        while(n!=null){
+            System.out.print(n.d+" ");
+            n=n.next;
+        }
+        System.out.println();
+    }
+    public static void Dequeue(){
+        front=front.next;
+    }
+    public static void main(String args[]){
+      Enqueue(10);
+      Enqueue(20);
+      Enqueue(30);
+      Enqueue(40);
+      Enqueue(50);
+      display();
+      Dequeue();
+      display();
+      Dequeue();
+      display();
+      
+    }
+}
