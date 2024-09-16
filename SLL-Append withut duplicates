@@ -1,0 +1,53 @@
+import java.util.*;
+class TestClass {
+    public static Node head,tail;
+    public static class Node{
+        int d;
+        Node next;
+        Node(int d){
+            this.d=d;
+        }
+
+    }
+    public static void Insert(int x){
+        Node temp=head;
+        
+        while(temp!=null){
+            if(temp.d==x){
+                return;
+            }
+            temp=temp.next;
+            }
+            Node n=new Node(x);
+                if(head==null){
+                    head=tail=n;
+                }
+                else{
+               // Node n=new Node(x);
+                tail.next=n;
+                tail=n;
+                }
+            
+        
+    }
+    public static void display(){
+        Node temp=head;
+        while(temp!=null){
+            System.out.print(temp.d+" ");
+            temp=temp.next;
+        }
+    }
+
+    public static void main(String args[] ) throws Exception {
+        Scanner s=new Scanner(System.in);
+        for(;;){
+            int x=s.nextInt();
+            if(x<0){
+                break;
+            }
+            Insert(x);
+            }
+            display();// Write your code here
+
+    }
+}
