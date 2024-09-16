@@ -1,0 +1,43 @@
+import java.util.*;
+class TestClass {
+    public static Node head,tail;
+    public static class Node{
+        int d;
+        Node next;
+        Node(int d){
+            this.d=d;
+        }
+    }
+    public static void InsertAtLast(int x){
+        Node n=new Node(x);
+        if(head==null){
+            head=tail=n;
+        }
+        else{
+            tail.next=n;
+            tail=n;
+        }
+
+    }
+    public static void Display(){
+    Node temp=head;
+    while(temp!=null){
+        System.out.println(temp.d);
+        temp=temp.next;
+    }
+
+    }
+    public static void main(String args[] ) throws Exception {
+       Scanner s=new Scanner(System.in);
+       TestClass t=new TestClass();
+    while(true){
+        int x=s.nextInt();
+        if(x==-1){
+            break;
+        }
+        t.InsertAtLast(x);
+    }
+    t.Display(); // Write your code here
+
+    }
+}
