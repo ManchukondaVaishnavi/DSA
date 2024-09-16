@@ -1,0 +1,69 @@
+import java.util.*;
+class TestClass {
+    public static Node head,tail;
+    public static class Node{
+        int d;
+        Node next;
+        Node(int d){
+         this.d=d;
+        }
+    }
+    public static void insert(int x){
+        Node n=new Node(x);
+        if(head==null){
+            head=tail=n;
+        }
+        else{
+            tail.next=n;
+            tail=n;
+        }
+    }
+    public static void delete(int l){
+      if(l==2){
+            head.next=null;
+            tail=head;
+            
+        }
+        else if(l>2){
+            Node temp=head;
+            Node pre=null;
+            while(temp.next.next!=null){
+                pre=temp;
+                temp=temp.next;
+            }
+pre.next=temp.next;
+        }
+        
+    }
+    public static void print(){
+        Node n=head;
+        while(n!=null){
+            System.out.print(n.d+" ");
+            n=n.next;
+        }
+        System.out.println();
+    }
+    public static void main(String args[] ) throws Exception {
+       Scanner s=new Scanner(System.in);
+       int l=0;
+       for(;;){
+        int x=s.nextInt();
+        if(x<0){
+            break;
+        }
+        l++;
+        insert(x);
+       } 
+       if(l>=2){
+       System.out.println("Before deleting:");
+       print();
+       System.out.println("After deleting:");
+      delete(l);
+       print();
+
+       }// Write your code here
+       else{
+        System.out.print("Deletion of second last element is not possible");
+       }  
+    }
+}
