@@ -1,0 +1,44 @@
+import java.util.*;
+class TestClass {
+    public static Node head,tail;
+    public static class Node{
+        int d;
+        Node next;
+        Node(int d){
+            this.d=d;
+        }
+    }
+    public static void insert(int x){
+        Node n=new Node(x);
+        if(head==null){
+            head=tail=n;
+        }
+        else{
+            tail.next=n;
+            tail=n;
+        }
+    }
+    public static int max(){
+        Node temp=head;
+        int m=temp.d;
+        while(temp!=null){
+            if(temp.d>m){
+                m=temp.d;
+            }
+            temp=temp.next;
+        }
+        return m;
+    }
+    public static void main(String args[] ) throws Exception {
+       Scanner s=new Scanner(System.in);
+       for(;;){
+       int x=s.nextInt();
+       if(x<0){
+        break;
+       }
+       insert(x);
+       }
+       System.out.print(max()); // Write your code here
+
+    }
+}
