@@ -1,0 +1,70 @@
+import java.util.*;
+class TestClass {
+    public static Node head,tail;
+    public static class Node{
+        int d;
+        Node next;
+        Node(int d){
+            this.d=d;
+        }
+    }
+    public static void insert(int x){
+        Node n=new Node(x);
+        if(head==null){
+            head=tail=n;
+        }
+        else{
+            tail.next=n;
+            tail=n;
+        }
+    }
+    public static void display(){
+        Node temp=head;
+        while(temp!=null){
+            System.out.print(temp.d+" ");
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+    public static void reverse(){
+           Node temp=head;
+           tail=head;
+           Node pre=null;
+           Node next=null;
+           while(temp!=null){
+            next=temp.next;
+           temp.next=pre;
+          
+           pre=temp;
+           temp=next;
+           }
+           head=pre;
+           Node te=head;
+           while(te!=null){
+            System.out.print(te.d+" ");
+            te=te.next;
+           }
+          System.out.println();
+    }
+    public static void main(String args[] ) throws Exception {
+       Scanner s=new Scanner(System.in);
+       int l=0;
+       for(;;){
+        int x=s.nextInt();
+        if(x<0){
+            break;
+        }
+        l++;
+        insert(x);
+       }
+       if(l==1){
+        System.out.print(head.d);
+        return;
+       }
+       System.out.println("Original Order:");
+       display();
+       System.out.println("Reverse Order:");
+       reverse(); // Write your code here
+
+    }
+}
