@@ -1,0 +1,42 @@
+import java.util.*;
+public class CoinExchange{
+    public static void main(String args[]){
+        Scanner s=new Scanner(System.in);
+        System.out.println("Enter the number of coins:");
+        int n=s.nextInt();
+        int coins[]=new int[n];
+        System.out.println("Enter the coins:");
+        for(int i=0;i<n;i++){
+            coins[i]=s.nextInt();
+        }
+        System.out.println("Enter the value:");
+        int v=s.nextInt();
+        int a[][]=new int[n][v+1];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<=v;j++){
+                if(j==0){
+                    a[i][j]=1;
+                }
+                else if(i==0){
+                    
+                    if(coins[i]<=j&&j%coins[i]==0){
+                        a[i][j]=1;
+                    }
+                    else{
+                        a[i][j]=0;
+                    }
+                }
+                else{
+                   
+                   if(coins[i]>j){
+                      a[i][j]=a[i-1][j]; 
+                   }
+                   else{
+                       a[i][j]=a[i-1][j]+a[i][j-coins[i]];
+                   }
+                }
+            }
+        }
+        System.out.println(a[n-1][v]);
+    }
+}
