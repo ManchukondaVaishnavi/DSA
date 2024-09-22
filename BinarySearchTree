@@ -1,0 +1,80 @@
+import java.util.*;
+public class BinarySearchTree{
+    public static Node root;
+    public static class Node{
+        int d;
+        Node left;
+        Node right;
+        Node(int d){
+            this.d=d;
+        }
+    }
+    public static void Insert(int x){
+        root=InsertNode(x,root);
+    }
+    public static Node InsertNode(int x,Node root){
+        Node n=new Node(x);
+        if(root==null){
+            root=n;
+            return root;
+        }
+       
+       else if(x<=root.d){
+               root.left=InsertNode(x,root.left);
+           }
+    else if(x>root.d){
+              root.right=InsertNode(x,root.right); 
+           }
+       
+       return root;
+    }
+    public static void preOrder(Node n){
+        if(n!=null){
+        System.out.print(n.d+" ");
+        preOrder(n.left);
+        preOrder(n.right);
+        }
+    }
+    public static void inOrder(Node n){
+        if(n!=null){
+            inOrder(n.left);
+        
+        System.out.print(n.d+" ");
+        inOrder(n.right);
+        }
+    }
+    public static void postOrder(Node n){
+        if(n!=null){
+        postOrder(n.left);
+        postOrder(n.right);
+        System.out.print(n.d+" ");
+        }
+    }
+    public static void main(String args[]){
+        Scanner s=new Scanner(System.in);
+        //System.out.println();
+        while(true){
+            System.out.println("1.Insert\n2.Preorder\n3.Inorder\n4.Postorder");
+            System.out.println("Enter your choice:");
+            int ch=s.nextInt();
+            if(ch==1){
+            System.out.println("Enter the element:");
+            int x=s.nextInt();
+            Insert(x);
+            }
+            else if(ch==2){
+                preOrder(root);
+            }
+            else if(ch==3){
+                inOrder(root);
+            }
+            else if(ch==4){
+                postOrder(root);
+            }
+            else{
+                break;
+            }
+        }
+        
+    }
+}
